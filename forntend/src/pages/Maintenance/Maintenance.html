@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Maintenance</title>
+    <link rel="stylesheet" href="MaintenanceStyle.css">
+</head>
+<body>
+    <div class="container">
+        <h1><u>MAINTENANCE</u></h1>
+        <table id="input-table">
+            <tr>
+                <td>Apartment Number</td>
+                <td><input type="text" id="apartmentNumber" placeholder="Apartment Number"></td>
+            </tr>
+            <tbody>
+                <tr>
+                    <td>Payment Status</td>
+                    <td>
+                        <select id="paymentStatus">
+                            <option value="">Select Status</option>
+                            <option value="Paid">Paid</option>
+                            <option value="Not Paid">Not Paid</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Payment Date</td>
+                    <td><input type="date" id="paymentDate" placeholder="Payment Date"></td>
+                </tr>
+                <tr>
+                    <td>Payment Amount</td>
+                    <td>
+                        <select id="paymentAmount">
+                            <option value="">Select Amount</option>
+                            <option value="1200">1200</option>
+                            <option value="2400">2400</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Payment Method</td>
+                    <td>
+                        <select id="paymentMethod">
+                            <option value="">Select Method</option>
+                            <option value="CASH">CASH</option>
+                            <option value="UPI">UPI</option>
+                            <option value="CHEQUE">CHEQUE</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Past Bill Paid</td>
+                    <td>
+                        <select id="pastBillPaid">
+                            <option value="">Select Status</option>
+                            <option value="Paid">Paid</option>
+                            <option value="Not Paid">Not Paid</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <button onclick="addData()">Add Data</button>
+        <button onclick="goBackToGrihaPravesh()" class="button-back">Go Back to Homepage</button>
+        <div id="dataTableContainer">
+            <table id="maintenanceTable"> 
+                <thead>
+                    <tr>
+                        <th>Apartment Number</th>
+                        <th>Payment Status</th>
+                        <th>Payment Date</th>
+                        <th>Payment Amount</th>
+                        <th>Payment Method</th>
+                        <th>Past Bill Paid</th>
+                        <th>User ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <script src="Maintenance.js"></script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint Box</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        h1 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #fb8b00;
+        }
+
+        input[type="text"], select, textarea {
+            width: 90%;
+            padding: 15px;
+            margin-bottom: 25px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+
+        select {
+            height: auto;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23333'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 16px 12px;
+            padding-right: 30px;
+        }
+
+        textarea {
+            height: 100px;
+            resize: none;
+        }
+
+        button {
+            background-color: #fb8b00;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+
+        p {
+            margin-top: 15px;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Complaint Box</h1>
+        <form id="complaintForm">
+            <input type="text" id="apartmentNo" placeholder="Enter your Apartment No." required>
+            <select id="complaintType" required>
+                <option value="">Select Complaint Type</option>
+                <option value="Plumbing">Plumbing</option>
+                <option value="Electrical">Electrical</option>
+                <option value="HVAC">HVAC</option>
+                <option value="Appliances">Appliances</option>
+                <option value="Structural">Structural</option>
+                <option value="Common Areas">Common Areas</option>
+                <option value="Noise and Disturbances">Noise and Disturbances</option>
+                <option value="Safety and Security">Safety and Security</option>
+                <option value="Cleanliness and Hygiene">Cleanliness and Hygiene</option>
+                <option value="Other Complaints">Other Complaints</option>
+            </select>
+            <textarea id="complaintText" placeholder="Enter your complaint here..." required></textarea>
+            <p id="responseMessage"></p>
+            <button type="submit" id="submitComplaint">Submit</button>
+            <button type="button" onclick="window.location.href='homepage.html'">Go to Homepage</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById("complaintForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const apartmentNo = document.getElementById("apartmentNo").value.trim();
+            const complaintType = document.getElementById("complaintType").value;
+            const complaintText = document.getElementById("complaintText").value.trim();
+            const responseMessage = document.getElementById("responseMessage");
+        
+            responseMessage.textContent = "";
+            responseMessage.style.color = "";
+        
+            if (apartmentNo === "" || complaintType === "" || complaintText.length < 10) {
+                responseMessage.style.color = "red";
+                responseMessage.textContent = "Please fill all fields correctly.";
+                return;
+            }
+        
+            const submitButton = document.getElementById("submitComplaint");
+            submitButton.disabled = true;
+            submitButton.textContent = "Submitting...";
+        
+            fetch('http://localhost:5000/api/complaints', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    apartment: apartmentNo, // FIXED: Correct variable name
+                    complaint_type: complaintType,
+                    complaint_text: complaintText
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    responseMessage.style.color = "green";
+                    responseMessage.textContent = "Complaint submitted successfully!";
+                    document.getElementById("complaintForm").reset();
+                } else {
+                    throw new Error(data.message || "Failed to submit complaint.");
+                }
+            })
+            .catch(error => {
+                responseMessage.style.color = "red";
+                responseMessage.textContent = error.message;
+            })
+            .finally(() => {
+                submitButton.disabled = false;
+                submitButton.textContent = "Submit";
+            });
+        });
+        
+    </script>
+</body>
+</html>

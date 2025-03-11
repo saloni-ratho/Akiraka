@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitor Management</title>
+    <link rel="stylesheet" href="visitorsM.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Visitor Management</h1>
+        <form>
+            <!-- Number of Visitors -->
+            <div class="form-group">
+                <label for="numVisitors">Number of Visitors:</label>
+                <input type="number" id="numVisitors" name="numVisitors" required
+                       title="Enter the total number of visitors (e.g., 1, 2, 3).">
+                <span class="tooltip">Enter the total number of visitors (e.g., 1, 2, 3).</span>
+                <span id="numVisitorsError" class="error"></span>
+            </div>
+
+            <!-- Visitor Name -->
+            <div class="form-group">
+                <label for="visitorName">Name of Visitor:</label>
+                <input type="text" id="visitorName" name="visitorName" required
+                       pattern="[A-Za-z\s]+" title="Enter the visitor's full name (letters and spaces only).">
+                <span class="tooltip">Enter the visitor's full name (letters and spaces only).</span>
+                <span id="visitorNameError" class="error"></span>
+            </div>
+
+            <!-- Contact Number -->
+            <div class="form-group">
+                <label for="contactNumber">Contact Number:</label>
+                <input type="tel" id="contactNumber" name="contactNumber" required
+                       pattern="[0-9]{10}" title="Enter a 10-digit Indian phone number (e.g., 9876543210).">
+                <span class="tooltip">Enter a 10-digit Indian phone number (e.g., 9876543210).</span>
+                <span id="contactNumberError" class="error"></span>
+            </div>
+
+            <!-- Vehicle Number -->
+            <div class="form-group">
+                <label for="vehicleNumber">Vehicle Number:</label>
+                <input type="text" id="vehicleNumber" name="vehicleNumber"
+                       pattern="[A-Za-z]{2}[0-9]{2}[A-Za-z]{2}[0-9]{4}"
+                       title="Enter the vehicle number in Indian format (e.g., DL12AB1234).">
+                <span class="tooltip">Enter the vehicle number in Indian format (e.g., DL12AB1234).</span>
+                <span id="vehicleNumberError" class="error"></span>
+            </div>
+            <div>
+                <button type="button" id="visitorSubmit" onclick="submitForm()">Submit</button>
+                <button type="button" onclick="window.location.href = '../homepage/homepage.html'">Back to Homepage</button>
+             </div>
+    <script src="visitorsM.js"></script>
+</body>
+</html>

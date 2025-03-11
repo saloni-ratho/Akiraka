@@ -1,0 +1,62 @@
+/* MaintenanceStyle.css */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+.container {
+  width: 80%;
+  margin: 40px auto;
+  background-color: hsl(0, 6%, 97%);
+  padding: 20px;
+  border: 1px solid hsl(0, 0%, 100%);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+table {
+  width: 80%;
+  border-collapse: collapse;
+}
+
+#input-table tr td:first-child {
+  background-color: #f29f56;
+}
+
+th, td {
+  border: 1px solid  #fb8b00;;
+  padding: 10px;
+  text-align: left;
+  font-size: 16px;
+}
+
+button {
+  background-color:  #b76706;;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #c35d2d;
+}
+
+.dots {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ccc;
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.dots span.active {
+  background-color:  #fb8b00;;
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Housing Society Feedback</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        .container {
+            background: white;
+            padding: 170px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        h1 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #fb8b00;
+        }
+
+        textarea {
+            width: 70%;
+            height: 100px;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            resize: none;
+        }
+
+        button {
+            background-color: #fb8b00;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        p {
+            margin-top: 15px;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Feedback</h1>
+        <form id="feedbackForm">
+            <textarea id="feedbackText" placeholder="Enter your feedback here..." required></textarea>
+            <button type="submit" id="submitFeedback">Submit Feedback</button>
+        </form>
+        <p id="responseMessage"></p>
+        <button onclick="window.location.href='homepage.html'">Go to Homepage</button> </div>
+    
+        <p id="responseMessage"></p>
+    </div>
+    <script>
+        document.getElementById("feedbackForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const feedbackText = document.getElementById("feedbackText").value.trim();
+            const responseMessage = document.getElementById("responseMessage");
+            if (feedbackText === "") {
+                responseMessage.style.color = "red";
+                responseMessage.textContent = "Please enter your feedback before submitting.";
+            } else {
+                responseMessage.style.color = "green";
+                responseMessage.textContent = "Thank you for your feedback! It has been submitted successfully.";
+                document.getElementById("feedbackForm").reset();
+            }
+        });
+    </script>
+</body>
+</html>

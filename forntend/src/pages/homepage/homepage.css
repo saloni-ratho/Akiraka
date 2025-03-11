@@ -1,0 +1,152 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8; /* Light gray background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 375px;
+    height: 667px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden; /* Hide any content overflowing the container */
+}
+
+header {
+    width: 100%;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f0f0f0;
+    border-top: 1px solid #f0f0f0;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-icon {
+    width: 20px;
+    height: 3px;
+    background-color: black;
+    margin: 4px;
+}
+
+.profile-container {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-left: auto; /* Push to the right */
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Ensure main takes full width */
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px; /* Add space below the logo */
+}
+
+.logo-image {
+    width: 150px;
+    height: auto;
+    margin: 20px 0;
+}
+
+.title1, .title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+    text-align: center; /* Center the titles */
+}
+
+.slider-button {
+    display: block;
+    width: 80%; /* Adjust button width */
+    max-width: 300px; /* Prevent buttons from becoming too wide */
+    height: 50px;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color:  #fb8b00;;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center; /* Center text in the buttons */
+}
+
+.slider-button:last-child {
+    margin-bottom: 0;
+}
+
+.slider-button:hover {
+    background-color: #b36100;
+}
+
+hr {
+    width: 90%;
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+}
+
+.sidebar {
+    width: 200px;
+    height: 100%;
+    background-color: #f4f4f4;
+    position: fixed;
+    top: 0;
+    left: -200px;
+    transition: left 0.3s ease;
+    z-index: 1000;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+}
+
+.sidebar.active {
+    left: 0;
+}
